@@ -1,9 +1,9 @@
 package auth.jpa.controller;
 
 import auth.jpa.model.User;
-//TODO
+//TODO more import
 public class Authentication {
-	//TODO
+	//TODO attribute goes here
 	public static User Authenticate(String username,String password) {
 		//TODO
 		return null;
