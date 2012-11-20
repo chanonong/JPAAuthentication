@@ -18,6 +18,7 @@ public class Register {
 	}
 	
 	public static User regis(String username,String password,String name,String lastname) {
+		if(username == null || password == null || name == null || lastname == null) return null;
 		User user = new User(username,password,name,lastname);
 		EntityTransaction et = em.getTransaction();
 		et.begin();
