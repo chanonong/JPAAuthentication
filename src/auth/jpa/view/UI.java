@@ -115,9 +115,18 @@ public class UI extends JFrame {
 			}
 			else if(arg0.getActionCommand().equals("regis")) {
 				if(userField.getText() != "" &&passwordField.getText() != "") {
-					String name = JOptionPane.showInputDialog("Your name:");
-					String lastname = JOptionPane.showInputDialog("Your lastname:");
-					User user = Register.regis(userField.getText(),passwordField.getText(),name,lastname);
+					String[] name = null;
+					try {
+						name = JOptionPane.showInputDialog("Your name & lastname (format: name lastname:").trim().split(" ");
+					} catch (NullPointerException n) {
+					}
+					if( name == null || name.length != 2) {
+						status.setText("please input both name and last name in correct format");
+						JOptionPane.showMessageDialog(null, "please input both name and last name in correct format");
+						status.setForeground(Color.RED);
+						return;
+					}
+					User user = Register.regis(userField.getText(),passwordField.getText(),name[0],name[1]);
 					status.setText("Register successfully");
 					status.setForeground(Color.BLACK);
 					info.setText("User: " + user.getUsername() +", Name: " + user.getName() + " , LastName: " + user.getLastname());
