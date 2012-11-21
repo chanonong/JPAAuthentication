@@ -1,5 +1,6 @@
 package auth.jpa.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.mysql.jdbc.Statement;
+import com.sun.istack.NotNull;
 
 @Entity
 @Table(name="USER")
@@ -14,9 +16,13 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	int id;
+	@Column(nullable = false)
 	String name;
+	@Column(nullable = false)
 	String username;
+	@Column(nullable = false)
 	String lastname;
+	@Column(nullable = false)
 	String password;
 	public User() {
 		
