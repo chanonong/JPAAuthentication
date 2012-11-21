@@ -8,5 +8,6 @@ public class Authentication {
 	
 	public static User Authenticate(String username,String password) {
 		//TODO
+		return null;
 	}
 }

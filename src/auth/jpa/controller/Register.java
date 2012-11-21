@@ -24,16 +24,15 @@ public class Register {
 		query.setParameter("username", username);
 		try {
 			User tmpuser = (User) query.getSingleResult();
-			if(tmpuser == null) {
-				EntityTransaction et = em.getTransaction();
-				et.begin();
-				em.persist(user);
-				et.commit();
-			}
+			return null;
+			
 		} catch (Exception e) {
-			StringBuilder message = new StringBuilder("Try \"SELECT u FROM User u WHERE u.username = \'");
-			message.append(username);
+			EntityTransaction et = em.getTransaction();
+			et.begin();
+			em.persist(user);
+			et.commit();
+			return user;
 		}
-		return null;
+
 	}
 }
