@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.mysql.jdbc.Statement;
-import com.sun.istack.NotNull;
 
 @Entity
 @Table(name="USER")
