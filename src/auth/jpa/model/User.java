@@ -16,13 +16,13 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	int id;
-	//@Column(nullable = false)
+	@Column(nullable = false)
 	String name;
-	//@Column(nullable = false)
+	@Column(nullable = false)
 	String username;
-	//@Column(nullable = false)
+	@Column(nullable = false)
 	String lastname;
-	//@Column(nullable = false)
+	@Column(nullable = false)
 	String password;
 	public User() {
 		
