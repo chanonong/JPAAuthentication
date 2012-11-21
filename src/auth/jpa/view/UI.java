@@ -14,7 +14,7 @@ public class UI extends JFrame {
 	JLabel password;
 	JTextField userField;
 	JPasswordField passwordField;
-	JButton submit;
+	JButton login;
 	JButton cancel;
 	JButton reset;
 	JButton regis;
@@ -66,8 +66,8 @@ public class UI extends JFrame {
 		Container midContainer = new Container();
 		midContainer.setLayout(new FlowLayout());
 
-		submit = new JButton("submit");
-		submit.addActionListener(new MyActionListener());
+		login = new JButton("login");
+		login.addActionListener(new MyActionListener());
 
 		cancel = new JButton("cancel");
 		cancel.addActionListener(new MyActionListener());
@@ -78,7 +78,7 @@ public class UI extends JFrame {
 		regis = new JButton("regis");
 		regis.addActionListener(new MyActionListener());
 
-		midContainer.add(submit);
+		midContainer.add(login);
 		midContainer.add(cancel);
 		midContainer.add(reset);
 		midContainer.add(regis);
@@ -113,7 +113,6 @@ public class UI extends JFrame {
 				status.setText("Please Login");
 				info.setText("User: null , Name: null , LastName: null ");
 			} else if (arg0.getActionCommand().equals("regis")) {
-				System.out.println(userField.getText().equals(""));
 				if (!userField.getText().equals("")
 						&& !passwordField.getText().equals("")) {
 					String[] name = null;
@@ -134,11 +133,20 @@ public class UI extends JFrame {
 					}
 					User user = Register.regis(userField.getText(),
 							passwordField.getText(), name[0], name[1]);
-					status.setText("Register successfully");
-					status.setForeground(Color.BLACK);
-					info.setText("User: " + user.getUsername() + ", Name: "
-							+ user.getName() + " , LastName: "
-							+ user.getLastname());
+					if (user == null) {
+						JOptionPane.showMessageDialog(null,
+								"User already exist");
+					} else {
+						status.setText("Register success");
+						status.setForeground(Color.BLACK);
+						info.setText("User: " + user.getUsername() + ", Name: "
+								+ user.getName() + " , LastName: "
+								+ user.getLastname());
+						JOptionPane.showMessageDialog(null, "Register success");
+						userField.setText("");
+						passwordField.setText("");
+						status.setText("Please Login");
+					}
 				} else {
 					status.setText("please input both username and password ");
 					status.setForeground(Color.RED);
